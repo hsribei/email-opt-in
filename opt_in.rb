@@ -12,4 +12,14 @@ post '/' do
     raw_name: params[:name]
   )
   puts params.inspect
+
+  # Redirect back
+  # FIXME: not really checking if posting to CIO was successful at this time
+  separator = request.referrer.include?('?') ? '&' : '?'
+  success = 'opt_in=success'
+  if request.referrer.include?(success)
+    redirect back
+  else
+    redirect back + separator + success
+  end
 end
