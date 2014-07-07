@@ -2,7 +2,7 @@ require 'sinatra'
 require 'customerio'
 
 post '/' do
-  customerio = Customerio::Client.new("YOUR SITE ID", "YOUR API SECRET KEY")
+  customerio = Customerio::Client.new(ENV['CIO_SITE_ID'], ENV['CIO_SECRET_API_KEY'])
 
   customerio.identify(
     id: params[:email],
@@ -11,4 +11,5 @@ post '/' do
     first_name: params[:name].split(/\w+/).first,
     raw_name: params[:name]
   )
+  puts params.inspect
 end
