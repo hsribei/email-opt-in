@@ -1,2 +1,2 @@
-require './app'
+require './opt_in'
 run Sinatra::Application
