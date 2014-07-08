@@ -8,7 +8,7 @@ post '/' do
     id: params[:email],
     email: params[:email],
     created_at: Time.now.to_i,
-    first_name: params[:name].split(/\w+/).first,
+    first_name: params[:name].split(/\w+/).first.capitalize,
     raw_name: params[:name]
   )
   puts params.inspect
